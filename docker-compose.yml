@@ -12,6 +12,8 @@ services:
     depends_on:
       - redis_container1
       - redis_container2
+      - redis_container3
+      - redis_container4
       - grpc_container
     networks:
       - mynetwork
@@ -37,6 +39,26 @@ services:
     ports:
       - "6380:6379"
     command: ["redis-server", "--port", "6380", "--maxmemory", "1mb", "--maxmemory-policy", "allkeys-lfu", "--protected-mode", "no"]
+
+  redis_container3:
+    image: bitnami/redis:latest
+    environment:
+      - ALLOW_EMPTY_PASSWORD=yes
+    networks:
+      - mynetwork
+    ports:
+      - "6381:6379"
+    command: ["redis-server", "--port", "6381", "--maxmemory", "1mb", "--maxmemory-policy", "allkeys-lfu", "--protected-mode", "no"]
+
+  redis_container4:
+    image: bitnami/redis:latest
+    environment:
+      - ALLOW_EMPTY_PASSWORD=yes
+    networks:
+      - mynetwork
+    ports:
+      - "6382:6379"
+    command: ["redis-server", "--port", "6382", "--maxmemory", "1mb", "--maxmemory-policy", "allkeys-lfu", "--protected-mode", "no"] 
 
   grpc_container:
     build: ./grpc_server

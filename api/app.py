@@ -9,6 +9,8 @@ app = Flask(__name__)
 redis_clients = [
     redis.Redis(host='redis_container1', port=6379),
     redis.Redis(host='redis_container2', port=6380),
+    redis.Redis(host='redis_container3', port=6381),
+    redis.Redis(host='redis_container4', port=6382),
 ]
 
 def get_redis_client(key: str):
