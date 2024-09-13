@@ -1,0 +1,39 @@
+version: '3.8'
+services:
+  simulator_container:
+    build: ./simulator
+    depends_on:
+      - api_container
+    networks:
+      - mynetwork
+
+  api_container:
+    build: ./api
+    depends_on:
+      - redis_container
+      - grpc_container
+    networks:
+      - mynetwork
+    ports:
+      - "5000:5000"
+
+  redis_container:
+    image: bitnami/redis:latest
+    environment:
+      - ALLOW_EMPTY_PASSWORD=yes
+    networks:
+      - mynetwork
+    ports:
+      - "6379:6379"
+    command: ["redis-server", "--maxmemory", "2mb", "--maxmemory-policy", "allkeys-lru", "--protected-mode", "no"]
+
+  grpc_container:
+    build: ./grpc_server
+    networks:
+      - mynetwork
+    ports:
+      - "50051:50051"
+
+networks:
+  mynetwork:
+    driver: bridge
