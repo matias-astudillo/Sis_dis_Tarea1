@@ -11,6 +11,10 @@ redis_clients = [
     redis.Redis(host='redis_container2', port=6380),
     redis.Redis(host='redis_container3', port=6381),
     redis.Redis(host='redis_container4', port=6382),
+    redis.Redis(host='redis_container5', port=6383),
+    redis.Redis(host='redis_container6', port=6384),
+    redis.Redis(host='redis_container7', port=6385),
+    redis.Redis(host='redis_container8', port=6386),
 ]
 
 def get_redis_client(key: str):

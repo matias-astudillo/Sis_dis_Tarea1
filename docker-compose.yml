@@ -14,6 +14,10 @@ services:
       - redis_container2
       - redis_container3
       - redis_container4
+      - redis_container5
+      - redis_container6
+      - redis_container7
+      - redis_container8
       - grpc_container
     networks:
       - mynetwork
@@ -58,7 +62,47 @@ services:
       - mynetwork
     ports:
       - "6382:6379"
-    command: ["redis-server", "--port", "6382", "--maxmemory", "1mb", "--maxmemory-policy", "allkeys-lfu", "--protected-mode", "no"] 
+    command: ["redis-server", "--port", "6382", "--maxmemory", "1mb", "--maxmemory-policy", "allkeys-lfu", "--protected-mode", "no"]
+
+  redis_container5:
+    image: bitnami/redis:latest
+    environment:
+      - ALLOW_EMPTY_PASSWORD=yes
+    networks:
+      - mynetwork
+    ports:
+      - "6383:6379"
+    command: ["redis-server", "--port", "6383", "--maxmemory", "1mb", "--maxmemory-policy", "allkeys-lfu", "--protected-mode", "no"] 
+
+  redis_container6:
+    image: bitnami/redis:latest
+    environment:
+      - ALLOW_EMPTY_PASSWORD=yes
+    networks:
+      - mynetwork
+    ports:
+      - "6384:6379"
+    command: ["redis-server", "--port", "6384", "--maxmemory", "1mb", "--maxmemory-policy", "allkeys-lfu", "--protected-mode", "no"] 
+
+  redis_container7:
+    image: bitnami/redis:latest
+    environment:
+      - ALLOW_EMPTY_PASSWORD=yes
+    networks:
+      - mynetwork
+    ports:
+      - "6385:6379"
+    command: ["redis-server", "--port", "6385", "--maxmemory", "1mb", "--maxmemory-policy", "allkeys-lfu", "--protected-mode", "no"] 
+
+  redis_container8:
+    image: bitnami/redis:latest
+    environment:
+      - ALLOW_EMPTY_PASSWORD=yes
+    networks:
+      - mynetwork
+    ports:
+      - "6386:6379"
+    command: ["redis-server", "--port", "6386", "--maxmemory", "1mb", "--maxmemory-policy", "allkeys-lfu", "--protected-mode", "no"]  
 
   grpc_container:
     build: ./grpc_server
