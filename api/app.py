@@ -18,8 +18,22 @@ redis_clients = [
 ]
 
 def get_redis_client(key: str):
-    index = hash(key) % len(redis_clients)
-    return redis_clients[index] , index
+    if key[0] < 'd':
+        return redis_clients[0], 0
+    elif key[0] < 'g':
+        return redis_clients[1], 1
+    elif key[0] < 'j':
+        return redis_clients[2], 2
+    elif key[0] < 'm':
+        return redis_clients[3], 3
+    elif key[0] < 'p':
+        return redis_clients[4], 4
+    elif key[0] < 's':
+        return redis_clients[5], 5 
+    elif key[0] < 'v':
+        return redis_clients[6], 6
+    else:
+        return redis_clients[7], 7
 
 @app.route('/resolve', methods=['POST'])
 def resolve_domain():
