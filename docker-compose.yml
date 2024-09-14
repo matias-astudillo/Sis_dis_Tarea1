@@ -38,7 +38,7 @@ services:
       - mynetwork
     ports:
       - "6380:6379"
-    command: ["redis-server", "--port", "6380", "--maxmemory", "1mb", "--maxmemory-policy", "allkeys-lfu", "--protected-mode", "no"]
+    command: ["redis-server", "--port", "6380", "--maxmemory", "1mb", "--maxmemory-policy", "allkeys-lru", "--protected-mode", "no"]
 
   redis_container3:
     image: bitnami/redis:latest
