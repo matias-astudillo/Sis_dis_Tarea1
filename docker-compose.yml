@@ -25,7 +25,7 @@ services:
       - mynetwork
     ports:
       - "6379:6379"
-    command: ["redis-server", "--maxmemory", "2mb", "--maxmemory-policy", "allkeys-lfu", "--protected-mode", "no"]
+    command: ["redis-server", "--save", "", "--maxmemory", "1mb", "--maxmemory-policy", "allkeys-lfu", "--protected-mode", "no"]
 
   grpc_container:
     build: ./grpc_server
