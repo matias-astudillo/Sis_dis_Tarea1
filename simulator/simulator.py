@@ -26,7 +26,7 @@ hits = 0
 misses = 0
 partition_stats = {0: 0, 1: 0, 2: 0, 3: 0}
 
-for _ in range(500):  
+for _ in range(4000):  
     domain = random.choice(domains)
     start_time = time.time()  # Inicia el temporizador
     response = requests.post(api_url, json={"domain": domain})
@@ -47,8 +47,6 @@ for _ in range(500):
     else:
         misses += 1
     
-    #print(f"Sent domain: {domain}, Response: {response.text}, Response Time: {response_time:.4f} seconds, Partition: {partition}")
-
 # Calcula el promedio y la desviación estándar de los tiempos de respuesta
 average_response_time = statistics.mean(response_times)
 std_deviation_response_time = statistics.stdev(response_times)
