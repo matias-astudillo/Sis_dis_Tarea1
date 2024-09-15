@@ -28,7 +28,7 @@ services:
       - mynetwork
     ports:
       - "6379:6379"
-    command: ["redis-server", "--maxmemory", "1mb", "--maxmemory-policy", "allkeys-lfu", "--protected-mode", "no"]
+    command: ["redis-server", "--save", "", "--maxmemory", "1mb", "--maxmemory-policy", "allkeys-lfu", "--protected-mode", "no"]
 
   redis_container2:
     image: bitnami/redis:latest
@@ -38,7 +38,7 @@ services:
       - mynetwork
     ports:
       - "6380:6379"
-    command: ["redis-server", "--port", "6380", "--maxmemory", "1mb", "--maxmemory-policy", "allkeys-lfu", "--protected-mode", "no"]
+    command: ["redis-server", "--port", "6380", "--save", "", "--maxmemory", "1mb", "--maxmemory-policy", "allkeys-lfu", "--protected-mode", "no"]
 
   redis_container3:
     image: bitnami/redis:latest
@@ -48,7 +48,7 @@ services:
       - mynetwork
     ports:
       - "6381:6379"
-    command: ["redis-server", "--port", "6381", "--maxmemory", "1mb", "--maxmemory-policy", "allkeys-lfu", "--protected-mode", "no"]
+    command: ["redis-server", "--port", "6381", "--save", "", "--maxmemory", "1mb", "--maxmemory-policy", "allkeys-lfu", "--protected-mode", "no"]
 
   redis_container4:
     image: bitnami/redis:latest
@@ -58,7 +58,7 @@ services:
       - mynetwork
     ports:
       - "6382:6379"
-    command: ["redis-server", "--port", "6382", "--maxmemory", "1mb", "--maxmemory-policy", "allkeys-lfu", "--protected-mode", "no"] 
+    command: ["redis-server", "--port", "6382", "--save", "", "--maxmemory", "1mb", "--maxmemory-policy", "allkeys-lfu", "--protected-mode", "no"] 
 
   grpc_container:
     build: ./grpc_server
