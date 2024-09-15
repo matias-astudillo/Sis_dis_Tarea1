@@ -4,7 +4,6 @@ import grpc
 import grpc_client
 
 app = Flask(__name__)
-#cache = redis.Redis(host='redis_container', port=6379)
 
 redis_clients = [
     redis.Redis(host='redis_container1', port=6379),
